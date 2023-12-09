@@ -50,17 +50,9 @@ class RedirectionServiceTest {
         final String originURL = "https://www.naver.com";
 
         final ShortURL expectedShortURL = new ShortURL(originURL);
-        when(shortURLRepository.findById(any())).thenReturn(Optional.of(expectedShortURL));
-
         final Long shortUrlId = expectedShortURL.getId();
-        final ShortURLDTO expected = ShortURLDTO.from(expectedShortURL);
 
         //when,then
-        final ShortURLDTO actual = redirectionService.getShortURLById(shortUrlId);
-
         assertThatThrownBy(() -> redirectionService.getShortURLById(shortUrlId));
-
-        //then
-        assertThat(actual).isEqualTo(expected);
     }
 }
