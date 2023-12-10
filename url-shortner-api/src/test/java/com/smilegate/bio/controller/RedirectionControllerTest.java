@@ -37,7 +37,7 @@ class RedirectionControllerTest {
         //then
         mockMvc
                 .perform(get("/1"))
-                .andExpect(status().isFound())
+                .andExpect(status().isPermanentRedirect())
                 .andExpect(redirectedUrl(originURL))
                 .andDo(print());
     }

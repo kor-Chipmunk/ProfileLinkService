@@ -6,10 +6,12 @@ import com.smilegate.bio.service.ShortURLService;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
 
 @RestController
 @RequiredArgsConstructor
@@ -18,12 +20,12 @@ public class RedirectionController {
     private final RedirectionService redirectionService;
 
     @GetMapping("{id}")
-    public void redirectOriginURL(
-            HttpServletResponse response,
-            @PathVariable("id") Long id
-    ) throws IOException {
+    public RedirectView redirectOriginURL(@PathVariable("id") Long id) {
         final ShortURLDTO shortURLDTO = redirectionService.getShortURLById(id);
         final String originURL = shortURLDTO.originUrl();
-        response.sendRedirect(originURL);
+
+        final RedirectView redirectView = new RedirectView(originURL);
+        redirectView.setStatusCode(HttpStatus.PERMANENT_REDIRECT);
+        return redirectView;
     }
 }
