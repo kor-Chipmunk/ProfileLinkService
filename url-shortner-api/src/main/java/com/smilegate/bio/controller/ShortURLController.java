@@ -1,7 +1,7 @@
 package com.smilegate.bio.controller;
 
 import com.smilegate.bio.dto.CreateShortURLRequestDTO;
-import com.smilegate.bio.dto.ShortURLDTO;
+import com.smilegate.bio.dto.CreateShortURLResponseDTO;
 import com.smilegate.bio.service.ShortURLService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,10 +17,10 @@ public class ShortURLController {
     private final ShortURLService shortURLService;
 
     @PostMapping
-    public ResponseEntity<ShortURLDTO> createShortURL(
+    public ResponseEntity<CreateShortURLResponseDTO> createShortURL(
             @RequestBody CreateShortURLRequestDTO request
     ) {
-        final ShortURLDTO response = shortURLService.createShortURL(request);
+        final CreateShortURLResponseDTO response = shortURLService.getOrCreateShortURL(request);
         return ResponseEntity.ok(response);
     }
 }
