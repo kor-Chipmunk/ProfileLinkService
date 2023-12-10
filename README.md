@@ -64,6 +64,10 @@ gantt
     쿠버네티스 환경 구축            :infra4, after infra3, 4d
 ```
 
+## 목표 아키텍처
+
+![스크린샷 2023-12-11 오전 3 55 04](https://github.com/kor-Chipmunk/ProfileLinkService/assets/16275188/a5a5d7e3-1d4c-4b87-a5e7-aec242386ef3)
+
 ## 레퍼런스
 
 ### 1. 리틀리, 올인원 프로필 링크 서비스
