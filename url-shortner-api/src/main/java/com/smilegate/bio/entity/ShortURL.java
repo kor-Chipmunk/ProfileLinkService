@@ -23,4 +23,7 @@ public class ShortURL extends BaseTimeEntity {
     public ShortURL(String originUrl) {
         this.originUrl = originUrl;
     }
+    public String getShortURL() {
+        return id.toString();
+    }
 }
