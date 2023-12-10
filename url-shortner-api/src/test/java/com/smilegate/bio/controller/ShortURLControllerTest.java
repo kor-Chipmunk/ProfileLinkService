@@ -9,7 +9,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.smilegate.bio.dto.CreateShortURLRequestDTO;
-import com.smilegate.bio.dto.ShortURLDTO;
+import com.smilegate.bio.dto.CreateShortURLResponseDTO;
 import com.smilegate.bio.service.ShortURLService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -39,8 +39,8 @@ class ShortURLControllerTest {
         final CreateShortURLRequestDTO request = new CreateShortURLRequestDTO(originURL);
 
         //when
-        final ShortURLDTO mockShortURLDTO = new ShortURLDTO(1L, originURL);
-        when(service.createShortURL(any())).thenReturn(mockShortURLDTO);
+        final CreateShortURLResponseDTO mockResponse = new CreateShortURLResponseDTO("1", originURL);
+        when(service.getOrCreateShortURL(any())).thenReturn(mockResponse);
 
         //then
         mockMvc.perform(
@@ -49,7 +49,7 @@ class ShortURLControllerTest {
                         .content(objectMapper.writeValueAsString(request))
                 )
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(1L))
+                .andExpect(jsonPath("$.shortUrl").value("1"))
                 .andExpect(jsonPath("$.originUrl").value(originURL))
                 .andDo(print());
     }

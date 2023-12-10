@@ -30,7 +30,7 @@ class RedirectionServiceTest {
         //given
         final String originURL = "https://www.naver.com";
 
-        final ShortURL expectedShortURL = new ShortURL(originURL);
+        final ShortURL expectedShortURL = new ShortURL(1L, originURL);
         when(shortURLRepository.findById(any())).thenReturn(Optional.of(expectedShortURL));
 
         final Long shortUrlId = expectedShortURL.getId();

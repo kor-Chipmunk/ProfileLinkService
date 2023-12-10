@@ -29,7 +29,7 @@ class RedirectionControllerTest {
     void Should_Redirect_To_ShortURL_When_Id_Serve() throws Exception {
         //given
         final String originURL = "https://www.naver.com";
-        final ShortURLDTO mockShortURLDTO = new ShortURLDTO(1L, originURL);
+        final ShortURLDTO mockShortURLDTO = new ShortURLDTO(1L, originURL, "1");
 
         //when
         when(service.getShortURLById(any())).thenReturn(mockShortURLDTO);
