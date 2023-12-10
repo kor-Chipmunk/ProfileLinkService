@@ -66,4 +66,5 @@ gantt
 
 ## 레퍼런스
 
-추후 수정 
+### 1. 리틀리, 올인원 프로필 링크 서비스
+![litt ly_ellekorea](https://github.com/kor-Chipmunk/ProfileLinkService/assets/16275188/7a8a1f5f-2fda-44b1-8cdf-e111d4641256)
