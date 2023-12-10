@@ -21,7 +21,7 @@ const HomePage: NextPage = () => {
       });
 
       setShortUrl(
-        `${process.env.NEXT_PUBLIC_SERVER_DEFAULT_END_POINT}/${response.id}`
+        `${process.env.NEXT_PUBLIC_SERVER_DEFAULT_END_POINT}/${response.shortUrl}`
       );
       setCapturedOriginUrl(originUrl);
 

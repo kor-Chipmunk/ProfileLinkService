@@ -5,6 +5,6 @@ export interface ShortRequest {
 }
 
 export interface ShortResponse {
-  id: number;
+  shortUrl: string;
   originUrl: string;
 }
