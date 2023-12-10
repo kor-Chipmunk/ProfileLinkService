@@ -5,7 +5,7 @@
 
 ## 데모
 
-![화면-기록-2023-12-10-오전-10 46 50](https://github.com/kor-Chipmunk/ProfileLinkService/assets/16275188/94b1250d-4011-4f41-bcbd-d16bcba13544)
+![화면 기록 2023-12-11 오전 3 33 40](https://github.com/kor-Chipmunk/ProfileLinkService/assets/16275188/f18ec633-8a2f-44a8-9ba8-6091fc7a35db)
 
 ## 시작하기
 
