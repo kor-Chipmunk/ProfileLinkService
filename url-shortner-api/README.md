@@ -10,6 +10,13 @@ $ ./gradlew clean build
 $  java -jar url-shortner-api/build/libs/url-shortner-api-XXX.jar
 ```
 
+## IDE에서 Lombok 어노테이션 처리 활성화
+
+IntelliJ IDE 에서 어노테이션 처리 활성화해야 Lombok 플러그인이 동작합니다.
+
+![스크린샷 2023-12-11 오전 4 03 49](https://github.com/kor-Chipmunk/ProfileLinkService/assets/16275188/5e1a4473-c37b-4b2b-ba15-2bfea0519ccc)
+
+
 ## 시퀀스 다이어그램
 
 ```mermaid
