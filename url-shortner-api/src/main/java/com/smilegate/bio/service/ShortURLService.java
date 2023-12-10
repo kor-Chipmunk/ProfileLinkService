@@ -1,10 +1,11 @@
 package com.smilegate.bio.service;
 
 import com.smilegate.bio.dto.CreateShortURLRequestDTO;
-import com.smilegate.bio.dto.ShortURLDTO;
+import com.smilegate.bio.dto.CreateShortURLResponseDTO;
 import com.smilegate.bio.entity.ShortURL;
 import com.smilegate.bio.repository.ShortURLRepository;
 import java.net.URL;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,20 +17,31 @@ public class ShortURLService {
     private final ShortURLRepository shortURLRepository;
 
     @Transactional
-    public ShortURLDTO createShortURL(CreateShortURLRequestDTO request) {
-        final String originURL = request.originUrl();
+    public CreateShortURLResponseDTO getOrCreateShortURL(final CreateShortURLRequestDTO request) {
+        final String originURL = removedTrailSlash(request.originUrl());
         validateOriginURL(originURL);
 
-        final ShortURL shortURL = new ShortURL(request.originUrl());
+        final Optional<ShortURL> retrievalShortURL = shortURLRepository.findByOriginUrl(originURL);
+        if (retrievalShortURL.isPresent()) {
+            return CreateShortURLResponseDTO.from(retrievalShortURL.get());
+        }
 
-        shortURLRepository.save(shortURL);
+        final ShortURL shortURLEntity = new ShortURL(request.originUrl());
+        final ShortURL createdShortURL = shortURLRepository.save(shortURLEntity);
 
-        return ShortURLDTO.from(shortURL);
+        return CreateShortURLResponseDTO.from(createdShortURL);
     }
 
-    private void validateOriginURL(String originURL) {
+    private String removedTrailSlash(final String originURL) {
+        if (originURL.endsWith("/")) {
+            return originURL.substring(0, originURL.length() - 1);
+        }
+        return originURL;
+    }
+
+    private void validateOriginURL(final String originURL) {
         try {
-            URL url = new URL(originURL);
+            final URL url = new URL(originURL);
             url.toURI();
         } catch (Exception exception) {
             throw new IllegalArgumentException();
