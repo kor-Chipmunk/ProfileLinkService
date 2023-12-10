@@ -9,7 +9,7 @@ public class WebConfiguration implements WebMvcConfigurer {
     private static final Long MAX_AGE = 3000L;
 
     @Override
-    public void addCorsMappings(CorsRegistry registry) {
+    public void addCorsMappings(final CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedOrigins("*")
                 .maxAge(MAX_AGE);

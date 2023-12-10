@@ -2,9 +2,6 @@ package com.smilegate.bio.controller;
 
 import com.smilegate.bio.dto.ShortURLDTO;
 import com.smilegate.bio.service.RedirectionService;
-import com.smilegate.bio.service.ShortURLService;
-import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;

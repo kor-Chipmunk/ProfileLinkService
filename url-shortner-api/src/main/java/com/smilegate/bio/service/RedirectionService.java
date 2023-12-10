@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class RedirectionService {
     private final ShortURLRepository shortURLRepository;
 
-    public ShortURLDTO getShortURLById(Long id) {
+    public ShortURLDTO getShortURLById(final Long id) {
         final ShortURL shortURL = shortURLRepository.findById(id)
                 .orElseThrow();
 
