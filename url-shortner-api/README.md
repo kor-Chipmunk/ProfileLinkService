@@ -22,5 +22,4 @@ sequenceDiagram
 
 ## 아키텍처
 
-추후 수정
-
+![스크린샷 2023-12-11 오전 3 24 58](https://github.com/kor-Chipmunk/ProfileLinkService/assets/16275188/310d2df5-c768-4ffe-acd1-9016e3ef0519)
