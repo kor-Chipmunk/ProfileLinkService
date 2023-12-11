@@ -32,7 +32,7 @@ class RedirectionControllerTest {
         final ShortURLDTO mockShortURLDTO = new ShortURLDTO(1L, originURL, "1");
 
         //when
-        when(service.getShortURLById(any())).thenReturn(mockShortURLDTO);
+        when(service.getShortURLByShortUrl(any())).thenReturn(mockShortURLDTO);
 
         //then
         mockMvc

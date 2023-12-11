@@ -17,8 +17,8 @@ public class RedirectionController {
     private final RedirectionService redirectionService;
 
     @GetMapping("{id}")
-    public RedirectView redirectOriginURL(@PathVariable("id") Long id) {
-        final ShortURLDTO shortURLDTO = redirectionService.getShortURLById(id);
+    public RedirectView redirectOriginURL(@PathVariable("id") String shortUrl) {
+        final ShortURLDTO shortURLDTO = redirectionService.getShortURLByShortUrl(shortUrl);
         final String originURL = shortURLDTO.originUrl();
 
         final RedirectView redirectView = new RedirectView(originURL);

@@ -16,7 +16,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 @ExtendWith(MockitoExtension.class)
 class RedirectionServiceTest {
@@ -27,34 +26,34 @@ class RedirectionServiceTest {
     private ShortURLRepository shortURLRepository;
 
     @Test
-    @DisplayName("아이디로 단축 주소 엔티티를 조회합니다.")
-    void Should_Get_Short_URL_When_Id_Serve() {
+    @DisplayName("단축 주소 요청으로 엔티티를 조회합니다.")
+    void Should_Get_Short_URL_When_Short_URL_Serve() {
         //given
         final String originURL = "https://www.naver.com";
+        final String shortURL = Base62Util.from(1L);
 
-        final ShortURL expectedShortURL = new ShortURL(originURL, Base62Util.from(1L));
-        when(shortURLRepository.findById(any())).thenReturn(Optional.of(expectedShortURL));
+        final ShortURL expectedShortURL = new ShortURL(originURL, shortURL);
+        when(shortURLRepository.findByShortUrl(any())).thenReturn(Optional.of(expectedShortURL));
 
-        final Long shortUrlId = expectedShortURL.getId();
         final ShortURLDTO expected = ShortURLDTO.from(expectedShortURL);
 
         //when
-        final ShortURLDTO actual = redirectionService.getShortURLById(shortUrlId);
+        final ShortURLDTO actual = redirectionService.getShortURLByShortUrl(shortURL);
 
         //then
         assertThat(actual).isEqualTo(expected);
     }
 
     @Test
-    @DisplayName("조회가 불가능한 경우 예외를 발생합니다.")
-    void Should_Throw_Exception_When_Id_Not_Found() {
+    @DisplayName("단축 주소 조회가 불가능한 경우 예외를 발생합니다.")
+    void Should_Throw_Exception_When_Short_Url_Not_Found() {
         //given
         final String originURL = "https://www.naver.com";
+        final String shortURL = Base62Util.from(1L);
 
-        final ShortURL expectedShortURL = new ShortURL(originURL, Base62Util.from(1L));
-        final Long shortUrlId = expectedShortURL.getId();
+        final ShortURL expectedShortURL = new ShortURL(originURL, shortURL);
 
         //when,then
-        assertThatThrownBy(() -> redirectionService.getShortURLById(shortUrlId));
+        assertThatThrownBy(() -> redirectionService.getShortURLByShortUrl(shortURL));
     }
 }
