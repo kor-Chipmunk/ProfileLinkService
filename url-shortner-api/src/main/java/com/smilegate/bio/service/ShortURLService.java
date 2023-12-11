@@ -4,6 +4,7 @@ import com.smilegate.bio.dto.CreateShortURLRequestDTO;
 import com.smilegate.bio.dto.CreateShortURLResponseDTO;
 import com.smilegate.bio.entity.ShortURL;
 import com.smilegate.bio.repository.ShortURLRepository;
+import com.smilegate.bio.util.Base62Util;
 import java.net.URL;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +27,13 @@ public class ShortURLService {
             return CreateShortURLResponseDTO.from(retrievalShortURL.get());
         }
 
-        final ShortURL shortURLEntity = new ShortURL(request.originUrl());
+        final Optional<ShortURL> lastShortURL = shortURLRepository.findTopByOrderByIdDesc();
+        long createdId = 1;
+        if (lastShortURL.isPresent()) {
+            createdId = lastShortURL.get().getId() + 1;
+        }
+
+        final ShortURL shortURLEntity = new ShortURL(request.originUrl(), Base62Util.from(createdId));
         final ShortURL createdShortURL = shortURLRepository.save(shortURLEntity);
 
         return CreateShortURLResponseDTO.from(createdShortURL);
