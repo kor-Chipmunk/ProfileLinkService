@@ -12,7 +12,7 @@ public record ShortURLDTO(
         return new ShortURLDTO(
                 shortURL.getId(),
                 shortURL.getOriginUrl(),
-                shortURL.getShortURL()
+                shortURL.getShortUrl()
         );
     }
 

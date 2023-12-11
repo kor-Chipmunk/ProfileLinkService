@@ -39,7 +39,7 @@ class ShortURLControllerTest {
         final CreateShortURLRequestDTO request = new CreateShortURLRequestDTO(originURL);
 
         //when
-        final CreateShortURLResponseDTO mockResponse = new CreateShortURLResponseDTO("1", originURL);
+        final CreateShortURLResponseDTO mockResponse = new CreateShortURLResponseDTO(originURL, "1");
         when(service.getOrCreateShortURL(any())).thenReturn(mockResponse);
 
         //then

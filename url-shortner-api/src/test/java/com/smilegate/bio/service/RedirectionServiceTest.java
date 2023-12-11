@@ -8,6 +8,7 @@ import static org.mockito.Mockito.when;
 import com.smilegate.bio.dto.ShortURLDTO;
 import com.smilegate.bio.entity.ShortURL;
 import com.smilegate.bio.repository.ShortURLRepository;
+import com.smilegate.bio.util.Base62Util;
 import java.util.Optional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,6 +16,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 @ExtendWith(MockitoExtension.class)
 class RedirectionServiceTest {
@@ -30,7 +32,7 @@ class RedirectionServiceTest {
         //given
         final String originURL = "https://www.naver.com";
 
-        final ShortURL expectedShortURL = new ShortURL(1L, originURL);
+        final ShortURL expectedShortURL = new ShortURL(originURL, Base62Util.from(1L));
         when(shortURLRepository.findById(any())).thenReturn(Optional.of(expectedShortURL));
 
         final Long shortUrlId = expectedShortURL.getId();
@@ -49,7 +51,7 @@ class RedirectionServiceTest {
         //given
         final String originURL = "https://www.naver.com";
 
-        final ShortURL expectedShortURL = new ShortURL(originURL);
+        final ShortURL expectedShortURL = new ShortURL(originURL, Base62Util.from(1L));
         final Long shortUrlId = expectedShortURL.getId();
 
         //when,then

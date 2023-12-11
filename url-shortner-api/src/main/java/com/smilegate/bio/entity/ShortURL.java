@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @Entity
 @Table
@@ -22,19 +23,11 @@ public class ShortURL extends BaseTimeEntity {
     @Column(nullable = false, unique = true)
     private String originUrl;
 
-    public ShortURL(
-            final Long id,
-            final String originUrl
-    ) {
-        this.id = id;
-        this.originUrl = originUrl;
-    }
+    @Column(nullable = false, unique = true)
+    private String shortUrl;
 
-    public ShortURL(final String originUrl) {
+    public ShortURL(final String originUrl, final String shortUrl) {
         this.originUrl = originUrl;
-    }
-
-    public String getShortURL() {
-        return id.toString();
+        this.shortUrl = shortUrl;
     }
 }
