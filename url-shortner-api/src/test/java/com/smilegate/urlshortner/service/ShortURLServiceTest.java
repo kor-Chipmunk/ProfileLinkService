@@ -6,6 +6,7 @@ import static org.mockito.Mockito.when;
 
 import com.smilegate.urlshortner.dto.CreateShortURLRequestDTO;
 import com.smilegate.urlshortner.dto.CreateShortURLResponseDTO;
+import com.smilegate.urlshortner.dto.TicketIssueResponseDTO;
 import com.smilegate.urlshortner.entity.ShortURL;
 import com.smilegate.urlshortner.repository.ShortURLRepository;
 import com.smilegate.urlshortner.util.Base62Util;
@@ -25,6 +26,9 @@ class ShortURLServiceTest {
     @Mock
     private ShortURLRepository shortURLRepository;
 
+    @Mock
+    private TicketService ticketService;
+
     @Test
     @DisplayName("원래 주소가 담긴 단축 주소를 생성합니다.")
     void Should_Create_Short_URL_When_Origin_URL_Serve() {
@@ -39,6 +43,7 @@ class ShortURLServiceTest {
         //when
         when(shortURLRepository.findByOriginUrl(any())).thenReturn(Optional.empty());
         when(shortURLRepository.save(any())).thenReturn(expectedShortURL);
+        when(ticketService.issue()).thenReturn(new TicketIssueResponseDTO(1L));
 
         final CreateShortURLResponseDTO actual = shortURLService.getOrCreateShortURL(request);
 
@@ -81,6 +86,7 @@ class ShortURLServiceTest {
         //when
         when(shortURLRepository.findByOriginUrl(any())).thenReturn(Optional.empty());
         when(shortURLRepository.save(any())).thenReturn(expectedShortURL);
+        when(ticketService.issue()).thenReturn(new TicketIssueResponseDTO(1L));
 
         final CreateShortURLResponseDTO actual = shortURLService.getOrCreateShortURL(request);
 
