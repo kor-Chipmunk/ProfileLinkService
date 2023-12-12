@@ -25,7 +25,7 @@ sequenceDiagram
     URL Shortner API-->>-Client: 단축 주소 전달
     Other Clients->>+URL Shortner API: 단축 주소로 원래 주소로 리다이렉션 요청
     URL Shortner API-->>-Other Clients: 원래 주소로 리다이렉션
-    URL Shortner API-->>+Ticket Server: 고유 번호 발급 요청
+    URL Shortner API->>+Ticket Server: 고유 번호 발급 요청
     Ticket Server-->>-URL Shortner API: 고유 번호 발급 
 ```
 
