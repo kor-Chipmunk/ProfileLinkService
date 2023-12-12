@@ -2,12 +2,12 @@
 
 티켓 서버는 고유 번호를 관리하는 서버입니다.  
 분산 시스템을 위한 유일 고유 번호 생성기입니다.  
-단축 서버에서 요청하면 고유 번호를 발급해줍니다.
+단축 서버에서 요청하면 고유 번호를 발급해줍니다.  
 
 ## 실행하는 법
 ```bash
 $ ./gradlew clean build
-$  java -jar url-shortner-api/build/libs/url-shortner-api-XXX.jar
+$  java -jar ticket-api/build/libs/ticket-api-XXX.jar
 ```
 
 ## IDE에서 Lombok 어노테이션 처리 활성화
@@ -21,15 +21,21 @@ IntelliJ IDE 에서 어노테이션 처리 활성화해야 Lombok 플러그인�
 
 ```mermaid
 sequenceDiagram
-    Client->>+URL Shortner API: 원래 주소로 단축 주소 생성 요청
-    URL Shortner API-->>-Client: 단축 주소 전달
-    Other Clients->>+URL Shortner API: 단축 주소로 원래 주소로 리다이렉션 요청
-    URL Shortner API-->>-Other Clients: 원래 주소로 리다이렉션
-    URL Shortner API-->>+Ticket Server: 고유 번호 발급 요청
-    Ticket Server-->>-URL Shortner API: 고유 번호 발급 
+    URL Shortner Server->>+Ticket Server: 고유 번호 발급 요청
+    Ticket Server-->>-URL Shortner Server: 고유 번호 발급
 ```
 
 ## 아키텍처
 
 
 추후 수정
+
+## Class DIagram
+
+```mermaid
+classDiagram
+    class Ticket {
+        +Long id
+        +getId()
+    }
+```
