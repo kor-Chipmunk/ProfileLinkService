@@ -1,13 +1,14 @@
-package com.smilegate.bio.service;
+package com.smilegate.urlshortner.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
-import com.smilegate.bio.dto.CreateShortURLRequestDTO;
-import com.smilegate.bio.dto.CreateShortURLResponseDTO;
-import com.smilegate.bio.entity.ShortURL;
-import com.smilegate.bio.repository.ShortURLRepository;
+import com.smilegate.urlshortner.dto.CreateShortURLRequestDTO;
+import com.smilegate.urlshortner.dto.CreateShortURLResponseDTO;
+import com.smilegate.urlshortner.entity.ShortURL;
+import com.smilegate.urlshortner.repository.ShortURLRepository;
+import com.smilegate.urlshortner.util.Base62Util;
 import java.util.Optional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -31,7 +32,7 @@ class ShortURLServiceTest {
         final String originURL = "https://www.naver.com";
         final CreateShortURLRequestDTO request = new CreateShortURLRequestDTO(originURL);
 
-        final ShortURL expectedShortURL = new ShortURL(1L, originURL);
+        final ShortURL expectedShortURL = new ShortURL(originURL, Base62Util.from(1L));
 
         final CreateShortURLResponseDTO expected = CreateShortURLResponseDTO.from(expectedShortURL);
 
@@ -52,7 +53,7 @@ class ShortURLServiceTest {
         final String originURL = "https://www.naver.com";
         final CreateShortURLRequestDTO request = new CreateShortURLRequestDTO(originURL);
 
-        final ShortURL expectedShortURL = new ShortURL(1L, originURL);
+        final ShortURL expectedShortURL = new ShortURL(originURL, Base62Util.from(1L));
 
         final CreateShortURLResponseDTO expected = CreateShortURLResponseDTO.from(expectedShortURL);
 
@@ -73,7 +74,7 @@ class ShortURLServiceTest {
         final CreateShortURLRequestDTO request = new CreateShortURLRequestDTO(originURLWithSlash);
 
         final String originURLWithoutSlash = "https://www.naver.com";
-        final ShortURL expectedShortURL = new ShortURL(1L, originURLWithoutSlash);
+        final ShortURL expectedShortURL = new ShortURL(originURLWithoutSlash, Base62Util.from(1L));
 
         final CreateShortURLResponseDTO expected = CreateShortURLResponseDTO.from(expectedShortURL);
 

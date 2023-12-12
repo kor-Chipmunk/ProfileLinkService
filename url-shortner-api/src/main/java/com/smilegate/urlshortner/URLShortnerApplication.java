@@ -1,13 +1,13 @@
-package com.smilegate.bio;
+package com.smilegate.urlshortner;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BioApplication {
+public class URLShortnerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(BioApplication.class, args);
+        SpringApplication.run(URLShortnerApplication.class, args);
     }
 
 }

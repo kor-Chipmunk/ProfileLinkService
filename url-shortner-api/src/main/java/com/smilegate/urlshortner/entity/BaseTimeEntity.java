@@ -1,4 +1,4 @@
-package com.smilegate.bio.entity;
+package com.smilegate.urlshortner.entity;
 
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;

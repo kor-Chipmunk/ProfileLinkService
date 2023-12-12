@@ -1,8 +1,8 @@
-package com.smilegate.bio.service;
+package com.smilegate.urlshortner.service;
 
-import com.smilegate.bio.dto.ShortURLDTO;
-import com.smilegate.bio.entity.ShortURL;
-import com.smilegate.bio.repository.ShortURLRepository;
+import com.smilegate.urlshortner.dto.ShortURLDTO;
+import com.smilegate.urlshortner.entity.ShortURL;
+import com.smilegate.urlshortner.repository.ShortURLRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,8 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 public class RedirectionService {
     private final ShortURLRepository shortURLRepository;
 
-    public ShortURLDTO getShortURLById(final Long id) {
-        final ShortURL shortURL = shortURLRepository.findById(id)
+    public ShortURLDTO getShortURLByShortUrl(final String shortUrl) {
+        final ShortURL shortURL = shortURLRepository.findByShortUrl(shortUrl)
                 .orElseThrow();
 
         return ShortURLDTO.from(shortURL);

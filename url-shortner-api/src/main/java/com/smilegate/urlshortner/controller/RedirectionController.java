@@ -1,7 +1,7 @@
-package com.smilegate.bio.controller;
+package com.smilegate.urlshortner.controller;
 
-import com.smilegate.bio.dto.ShortURLDTO;
-import com.smilegate.bio.service.RedirectionService;
+import com.smilegate.urlshortner.dto.ShortURLDTO;
+import com.smilegate.urlshortner.service.RedirectionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,8 +17,8 @@ public class RedirectionController {
     private final RedirectionService redirectionService;
 
     @GetMapping("{id}")
-    public RedirectView redirectOriginURL(@PathVariable("id") Long id) {
-        final ShortURLDTO shortURLDTO = redirectionService.getShortURLById(id);
+    public RedirectView redirectOriginURL(@PathVariable("id") String shortUrl) {
+        final ShortURLDTO shortURLDTO = redirectionService.getShortURLByShortUrl(shortUrl);
         final String originURL = shortURLDTO.originUrl();
 
         final RedirectView redirectView = new RedirectView(originURL);

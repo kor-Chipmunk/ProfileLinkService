@@ -1,4 +1,4 @@
-package com.smilegate.bio.entity;
+package com.smilegate.urlshortner.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -22,19 +22,11 @@ public class ShortURL extends BaseTimeEntity {
     @Column(nullable = false, unique = true)
     private String originUrl;
 
-    public ShortURL(
-            final Long id,
-            final String originUrl
-    ) {
-        this.id = id;
-        this.originUrl = originUrl;
-    }
+    @Column(nullable = false, unique = true)
+    private String shortUrl;
 
-    public ShortURL(final String originUrl) {
+    public ShortURL(final String originUrl, final String shortUrl) {
         this.originUrl = originUrl;
-    }
-
-    public String getShortURL() {
-        return id.toString();
+        this.shortUrl = shortUrl;
     }
 }

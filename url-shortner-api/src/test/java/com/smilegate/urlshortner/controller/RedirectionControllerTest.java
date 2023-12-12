@@ -1,4 +1,4 @@
-package com.smilegate.bio.controller;
+package com.smilegate.urlshortner.controller;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -7,8 +7,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
-import com.smilegate.bio.dto.ShortURLDTO;
-import com.smilegate.bio.service.RedirectionService;
+import com.smilegate.urlshortner.dto.ShortURLDTO;
+import com.smilegate.urlshortner.service.RedirectionService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +32,7 @@ class RedirectionControllerTest {
         final ShortURLDTO mockShortURLDTO = new ShortURLDTO(1L, originURL, "1");
 
         //when
-        when(service.getShortURLById(any())).thenReturn(mockShortURLDTO);
+        when(service.getShortURLByShortUrl(any())).thenReturn(mockShortURLDTO);
 
         //then
         mockMvc

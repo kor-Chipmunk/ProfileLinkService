@@ -1,4 +1,4 @@
-package com.smilegate.bio.controller;
+package com.smilegate.urlshortner.controller;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -8,9 +8,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.smilegate.bio.dto.CreateShortURLRequestDTO;
-import com.smilegate.bio.dto.CreateShortURLResponseDTO;
-import com.smilegate.bio.service.ShortURLService;
+import com.smilegate.urlshortner.dto.CreateShortURLRequestDTO;
+import com.smilegate.urlshortner.dto.CreateShortURLResponseDTO;
+import com.smilegate.urlshortner.service.ShortURLService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +39,7 @@ class ShortURLControllerTest {
         final CreateShortURLRequestDTO request = new CreateShortURLRequestDTO(originURL);
 
         //when
-        final CreateShortURLResponseDTO mockResponse = new CreateShortURLResponseDTO("1", originURL);
+        final CreateShortURLResponseDTO mockResponse = new CreateShortURLResponseDTO(originURL, "1");
         when(service.getOrCreateShortURL(any())).thenReturn(mockResponse);
 
         //then

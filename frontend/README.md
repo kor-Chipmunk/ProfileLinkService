@@ -1,11 +1,12 @@
-## Step 1. URL Shortner Simple
+## Step 2. URL Shortner Simple Base62
 
 현재 버전은 원래 주소를 받아 단축 주소를 만들어주는 서버와 통신합니다.  
 만든 단축 주소를 표시합니다.
 
 ## 데모
 
-![화면 기록 2023-12-11 오전 3 33 40](https://github.com/kor-Chipmunk/ProfileLinkService/assets/16275188/f18ec633-8a2f-44a8-9ba8-6091fc7a35db)
+![화면 기록 2023-12-11 오후 7 01 16](https://github.com/kor-Chipmunk/ProfileLinkService/assets/16275188/123aeb91-d66f-4a60-96b0-8dfaec1ccc82)
+
 
 ## 시작하기
 

@@ -1,4 +1,4 @@
-package com.smilegate.bio.dto;
+package com.smilegate.urlshortner.dto;
 
 public record CreateShortURLRequestDTO(String originUrl) {
 }

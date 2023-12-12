@@ -1,6 +1,6 @@
-package com.smilegate.bio.dto;
+package com.smilegate.urlshortner.dto;
 
-import com.smilegate.bio.entity.ShortURL;
+import com.smilegate.urlshortner.entity.ShortURL;
 
 public record ShortURLDTO(
         Long id,
@@ -12,7 +12,7 @@ public record ShortURLDTO(
         return new ShortURLDTO(
                 shortURL.getId(),
                 shortURL.getOriginUrl(),
-                shortURL.getShortURL()
+                shortURL.getShortUrl()
         );
     }
 
