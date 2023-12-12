@@ -27,8 +27,8 @@ sequenceDiagram
 
 ## 아키텍처
 
+![스크린샷 2023-12-13 오전 7 39 17](https://github.com/kor-Chipmunk/ProfileLinkService/assets/16275188/66ffc1be-47bc-4a31-948c-ee79c8c699f7)
 
-추후 수정
 
 ## Class DIagram
 
