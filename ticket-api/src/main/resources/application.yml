@@ -1,5 +1,5 @@
 server:
-    port: 8000
+    port: 8001
 
 spring:
   datasource:
@@ -21,7 +21,3 @@ spring:
         dialect: org.hibernate.dialect.H2Dialect
         format_sql: true
         show_sql: true
-
-webclient:
-  ticket:
-    baseurl: http://localhost:8001

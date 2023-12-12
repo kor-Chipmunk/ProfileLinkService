@@ -1,3 +1,4 @@
 rootProject.name = 'profile-link-service'
 
 include "url-shortner-api"
+include 'ticket-api'
