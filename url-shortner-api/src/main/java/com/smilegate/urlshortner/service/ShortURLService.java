@@ -2,6 +2,7 @@ package com.smilegate.urlshortner.service;
 
 import com.smilegate.urlshortner.dto.CreateShortURLRequestDTO;
 import com.smilegate.urlshortner.dto.CreateShortURLResponseDTO;
+import com.smilegate.urlshortner.dto.TicketIssueResponseDTO;
 import com.smilegate.urlshortner.entity.ShortURL;
 import com.smilegate.urlshortner.repository.ShortURLRepository;
 import com.smilegate.urlshortner.util.Base62Util;
@@ -16,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class ShortURLService {
     private final ShortURLRepository shortURLRepository;
+    private final TicketService ticketService;
 
     @Transactional
     public CreateShortURLResponseDTO getOrCreateShortURL(final CreateShortURLRequestDTO request) {
@@ -27,13 +29,10 @@ public class ShortURLService {
             return CreateShortURLResponseDTO.from(retrievalShortURL.get());
         }
 
-        final Optional<ShortURL> lastShortURL = shortURLRepository.findTopByOrderByIdDesc();
-        long createdId = 1;
-        if (lastShortURL.isPresent()) {
-            createdId = lastShortURL.get().getId() + 1;
-        }
+        final TicketIssueResponseDTO ticketResponseDTO = ticketService.issue();
+        final long issueId = ticketResponseDTO.issueId();
 
-        final ShortURL shortURLEntity = new ShortURL(request.originUrl(), Base62Util.from(createdId));
+        final ShortURL shortURLEntity = new ShortURL(request.originUrl(), Base62Util.from(issueId));
         final ShortURL createdShortURL = shortURLRepository.save(shortURLEntity);
 
         return CreateShortURLResponseDTO.from(createdShortURL);
