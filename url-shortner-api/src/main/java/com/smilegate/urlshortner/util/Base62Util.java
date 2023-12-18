@@ -20,7 +20,7 @@ public class Base62Util {
     }
 
     public static String from(long id) {
-        StringBuilder builder = new StringBuilder(MAX_LENGTH);
+        final StringBuilder builder = new StringBuilder(MAX_LENGTH);
 
         while (id > 0) {
             builder.append(SCHEMES[(int) (id % RADIX)]);
