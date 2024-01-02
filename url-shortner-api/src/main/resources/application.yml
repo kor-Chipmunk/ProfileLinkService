@@ -24,4 +24,4 @@ spring:
 
 webclient:
   ticket:
-    baseurl: http://localhost:8001
+    baseurl: http://localhost:8100

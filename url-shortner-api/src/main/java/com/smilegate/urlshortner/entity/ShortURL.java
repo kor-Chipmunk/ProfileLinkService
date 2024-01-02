@@ -22,11 +22,19 @@ public class ShortURL extends BaseTimeEntity {
     @Column(nullable = false, unique = true)
     private String originUrl;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String shortUrl;
 
-    public ShortURL(final String originUrl, final String shortUrl) {
+    @Column(nullable = false, unique = true)
+    private Long ticket;
+
+    public ShortURL(
+            final String originUrl
+            , final String shortUrl
+            , final Long ticket
+    ) {
         this.originUrl = originUrl;
         this.shortUrl = shortUrl;
+        this.ticket = ticket;
     }
 }

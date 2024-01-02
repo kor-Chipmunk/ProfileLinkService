@@ -32,7 +32,11 @@ public class ShortURLService {
         final TicketIssueResponseDTO ticketResponseDTO = ticketService.issue();
         final long issueId = ticketResponseDTO.issueId();
 
-        final ShortURL shortURLEntity = new ShortURL(request.originUrl(), Base62Util.from(issueId));
+        final ShortURL shortURLEntity = new ShortURL(
+                request.originUrl()
+                , Base62Util.encode(issueId)
+                , issueId
+        );
         final ShortURL createdShortURL = shortURLRepository.save(shortURLEntity);
 
         return CreateShortURLResponseDTO.from(createdShortURL);
