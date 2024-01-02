@@ -55,9 +55,9 @@ classDiagram
     }
     
     class BlockProfile {
-        +String mainText
-        +String subText
-        +String profileImage
+        +MainBaseText main
+        +SubBaseText sub
+        +Image profileImage
     }
     
     class BlockLink {
