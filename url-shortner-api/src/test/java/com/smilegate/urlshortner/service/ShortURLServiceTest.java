@@ -36,7 +36,7 @@ class ShortURLServiceTest {
         final String originURL = "https://www.naver.com";
         final CreateShortURLRequestDTO request = new CreateShortURLRequestDTO(originURL);
 
-        final ShortURL expectedShortURL = new ShortURL(originURL, Base62Util.from(1L));
+        final ShortURL expectedShortURL = new ShortURL(originURL, Base62Util.encode(1L), 1L);
 
         final CreateShortURLResponseDTO expected = CreateShortURLResponseDTO.from(expectedShortURL);
 
@@ -58,7 +58,7 @@ class ShortURLServiceTest {
         final String originURL = "https://www.naver.com";
         final CreateShortURLRequestDTO request = new CreateShortURLRequestDTO(originURL);
 
-        final ShortURL expectedShortURL = new ShortURL(originURL, Base62Util.from(1L));
+        final ShortURL expectedShortURL = new ShortURL(originURL, Base62Util.encode(1L), 1L);
 
         final CreateShortURLResponseDTO expected = CreateShortURLResponseDTO.from(expectedShortURL);
 
@@ -79,7 +79,7 @@ class ShortURLServiceTest {
         final CreateShortURLRequestDTO request = new CreateShortURLRequestDTO(originURLWithSlash);
 
         final String originURLWithoutSlash = "https://www.naver.com";
-        final ShortURL expectedShortURL = new ShortURL(originURLWithoutSlash, Base62Util.from(1L));
+        final ShortURL expectedShortURL = new ShortURL(originURLWithoutSlash, Base62Util.encode(1L), 1L);
 
         final CreateShortURLResponseDTO expected = CreateShortURLResponseDTO.from(expectedShortURL);
 

@@ -30,10 +30,10 @@ class RedirectionServiceTest {
     void Should_Get_Short_URL_When_Short_URL_Serve() {
         //given
         final String originURL = "https://www.naver.com";
-        final String shortURL = Base62Util.from(1L);
+        final String shortURL = Base62Util.encode(1L);
 
-        final ShortURL expectedShortURL = new ShortURL(originURL, shortURL);
-        when(shortURLRepository.findByShortUrl(any())).thenReturn(Optional.of(expectedShortURL));
+        final ShortURL expectedShortURL = new ShortURL(originURL, shortURL, 1L);
+        when(shortURLRepository.findByTicket(any())).thenReturn(Optional.of(expectedShortURL));
 
         final ShortURLDTO expected = ShortURLDTO.from(expectedShortURL);
 
@@ -49,9 +49,9 @@ class RedirectionServiceTest {
     void Should_Throw_Exception_When_Short_Url_Not_Found() {
         //given
         final String originURL = "https://www.naver.com";
-        final String shortURL = Base62Util.from(1L);
+        final String shortURL = Base62Util.encode(1L);
 
-        final ShortURL expectedShortURL = new ShortURL(originURL, shortURL);
+        final ShortURL expectedShortURL = new ShortURL(originURL, shortURL, 1L);
 
         //when,then
         assertThatThrownBy(() -> redirectionService.getShortURLByShortUrl(shortURL));

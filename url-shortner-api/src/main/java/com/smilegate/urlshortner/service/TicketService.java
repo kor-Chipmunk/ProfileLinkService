@@ -1,7 +1,6 @@
 package com.smilegate.urlshortner.service;
 
 import com.smilegate.urlshortner.dto.TicketIssueResponseDTO;
-import java.time.Duration;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;

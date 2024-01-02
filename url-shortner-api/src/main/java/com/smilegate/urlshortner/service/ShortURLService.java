@@ -21,7 +21,7 @@ public class ShortURLService {
 
     @Transactional
     public CreateShortURLResponseDTO getOrCreateShortURL(final CreateShortURLRequestDTO request) {
-        final String originURL = removedTrailSlash(request.originUrl());
+        final String originURL = removeTrailSlash(request.originUrl());
         validateOriginURL(originURL);
 
         final Optional<ShortURL> retrievalShortURL = shortURLRepository.findByOriginUrl(originURL);
@@ -32,13 +32,17 @@ public class ShortURLService {
         final TicketIssueResponseDTO ticketResponseDTO = ticketService.issue();
         final long issueId = ticketResponseDTO.issueId();
 
-        final ShortURL shortURLEntity = new ShortURL(request.originUrl(), Base62Util.from(issueId));
+        final ShortURL shortURLEntity = new ShortURL(
+                request.originUrl()
+                , Base62Util.encode(issueId)
+                , issueId
+        );
         final ShortURL createdShortURL = shortURLRepository.save(shortURLEntity);
 
         return CreateShortURLResponseDTO.from(createdShortURL);
     }
 
-    private String removedTrailSlash(final String originURL) {
+    private String removeTrailSlash(final String originURL) {
         if (originURL.endsWith("/")) {
             return originURL.substring(0, originURL.length() - 1);
         }
