@@ -30,7 +30,7 @@ sequenceDiagram
 
 ## 아키텍처
 
-![스크린샷 2023-12-13 오전 7 39 17](https://github.com/kor-Chipmunk/ProfileLinkService/assets/16275188/66ffc1be-47bc-4a31-948c-ee79c8c699f7)
+![스크린샷 2024-01-02 오후 5 06 16](https://github.com/kor-Chipmunk/ProfileLinkService/assets/16275188/103586cb-d761-4c41-86dc-f92fbbfa9729)
 
 
 ## Domain Class DIagram
@@ -42,6 +42,8 @@ classDiagram
     Block <|-- BlockText
     Block <|-- BlockMedia
     Block <|-- BlockSNSConnection
+
+    Page <-- Block
     
     class Page {
         +MainBaseText name;
